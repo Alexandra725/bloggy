@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const ObjectId = require('mongodb').ObjectId;
+const bcryptjs = require('bcryptjs');
+
 
 const tokenVerify = require('../middleware/tokenVerify.js')
 
 //#region perfil usuario
 
 router.get('/perfil', tokenVerify, async (req, res) => {
-
    await req.app.locals.dbo.collection('users').find({}).toArray((err, user) => {
     const userId = req.user._id;
         if (err) {
@@ -25,6 +26,32 @@ router.get('/perfil', tokenVerify, async (req, res) => {
         });
     });
     });
+});
+
+router.get('/', async (req, res) => {
+    const defaultUser = 
+    {
+        name: "Admin",
+        lastName: "Admin",
+        nickName: "Admin",
+        email: "admin@admin.com",
+        pass: bcryptjs.hashSync("1234"),
+        role: "ADMIN"
+    }
+    await req.app.locals.dbo.collection('users').find({}).toArray((err, users) => {
+        console.log('users', users)
+
+    if(users.length === 0) {
+        req.app.locals.dbo.collection('users').insert(defaultUser, (err, user) => {
+            if (err) {
+               res.send(err)
+            }
+            console.log("admin inserted:", defaultUser);
+        })
+    } else {
+        console.log('error insert a user')
+    }
+});
 });
 
 //#endregion

@@ -7,6 +7,8 @@ const https = require('https');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const defaultUser = require('./functions/load_users.js')
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
@@ -19,13 +21,13 @@ app.all("/*", function (req, res, next) {
     return next();
 });
 
-
 app.use('/', require('./routes/post.js'));
 app.use('/', require('./routes/comments.js'));
 app.use('/', require('./routes/offensiveWords.js'));
 app.use('/', require('./users/auth.js'));
 app.use('/', require('./users/register.js'));
 app.use('/', require('./users/users.js'))
+app.use('/', require('./functions/load_users.js'))
 
 
 MongoClient.connect(url, { useUnifiedTopology: true }, (err, db)=> {

@@ -1,81 +1,96 @@
 <template>
   <div>
     <NavBar></NavBar>
-    
-    <b-card id="title" bg-variant="light" text-variant="dark"  v-for="post in posts"
-      v-bind:key="post._id"
-      >
-      <p class = error v-if="error"> {{ error }}</p>
+
+    <b-card id="title" bg-variant="light" text-variant="dark" v-for="post in posts" v-bind:key="post._id">
+      <p class=error v-if="error"> {{ error }}</p>
       <b-card-text id="text">
-       {{post.title}}
-      <p>{{post.name}}</p>
+        {{post.title}}
+        <p>{{post.name}}</p>
       </b-card-text>
-      <router-link class="router" :to="`/post/${post._id}`"><b-button variant="dark">post</b-button></router-link>
-    <p>{{post.date}}</p>
+      <router-link class="router" :to="`/post/${post._id}`">
+        <b-button variant="dark">post</b-button>
+      </router-link>
+      <p>{{post.date}}</p>
     </b-card>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import NavBar from './NavBar';
+  import axios from 'axios';
+  import NavBar from './NavBar';
 
-export default {
-  name:'Posts',
-  components: {
-    'NavBar': NavBar
-  },
-  data() {
-    return {
-      posts: [],
-      error: '',
-      title:'',
-      postId:'',
-      user:''
-    }
-  },
-  methods:{
-    getPosts() {
-axios.get('http://localhost:3000/posts')
-      .then(response => {
-          this.posts = response.data
-          this.$store.dispatch('setPosts', this.posts)
-     }).catch(error =>{
-       this.error = error
-     })
-    }
+  export default {
+    name: 'Posts',
+    components: {
+      'NavBar': NavBar
+    },
+    data() {
+      return {
+        posts: [],
+        error: '',
+        title: '',
+        postId: '',
+        user: ''
+      }
+    },
+    methods: {
+      getPosts() {
+        axios.get('http://localhost:3000/posts')
+          .then(response => {
+            this.posts = response.data
+            this.$store.dispatch('setPosts', this.posts)
+          }).catch(error => {
+            this.error = error
+          })
+      },
 
-  },
-    created () {
+      loadUser() {
+        axios.get('http://localhost:3000/')
+        .then(response=> {
+                                  /* eslint-disable no-console */
+                        console.log("err", response)
+                        /* eslint-enable no-console */
+        })
+        .catch(err => {
+                                  /* eslint-disable no-console */
+                        console.log("err", err)
+                        /* eslint-enable no-console */
+        })
+      }
+
+    },
+    created() {
       this.getPosts();
+      this.loadUser();
     }
   }
-
 </script>
 
 <style scoped>
-
-
   @media (min-width: 1200px) {
 
     button {
       text-align: left;
     }
-    #text{
-        width: auto;
-        font-size: 23px;
+
+    #text {
+      width: auto;
+      font-size: 23px;
     }
-    #title{
+
+    #title {
       margin-top: 5px;
       margin-bottom: 5px;
     }
-    #col-comment{
-        width: auto;
+
+    #col-comment {
+      width: auto;
     }
+
     .router {
       text-decoration: none;
       color: beige;
     }
-}
-
+  }
 </style>

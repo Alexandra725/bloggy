@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar></NavBar>
+    <NavBar class="nav"></NavBar>
 
     <b-card id="title" bg-variant="light" text-variant="dark" v-for="post in posts" v-bind:key="post._id">
       <p class=error v-if="error"> {{ error }}</p>
@@ -39,7 +39,7 @@
         axios.get('http://localhost:3000/posts')
           .then(response => {
             this.posts = response.data
-            this.$store.dispatch('setPosts', this.posts)
+            this.$store.dispatch('setPost', this.posts)
           }).catch(error => {
             this.error = error
           })
@@ -47,16 +47,12 @@
 
       loadUser() {
         axios.get('http://localhost:3000/')
-        .then(response=> {
-                                  /* eslint-disable no-console */
-                        console.log("err", response)
-                        /* eslint-enable no-console */
-        })
-        .catch(err => {
-                                  /* eslint-disable no-console */
-                        console.log("err", err)
-                        /* eslint-enable no-console */
-        })
+          .then()
+          .catch(err => {
+            /* eslint-disable no-console */
+            console.log("err", err)
+            /* eslint-enable no-console */
+          })
       }
 
     },

@@ -16,7 +16,7 @@
                         <p class="comment">{{comment.text}}</p>
                     </div>
                     <p>Publicar comentario</p>
-                    <b-form-textarea class="comment" placeholder="Enter comment" v-model="textComment">
+                    <b-form-textarea class="textComment" placeholder="Enter comment" v-model="textComment">
                     </b-form-textarea>
                     <b-alert v-if="error" variant="danger" show dismissible>
                       {{msgError}}:  Hay palabras que no estan permitidas. Revisa tu comentario
@@ -69,9 +69,6 @@
                         this.getOnePost()
                     )
                     .catch(err => {
-                                                /* eslint-disable no-console */
-                        console.log("err", err)
-                        /* eslint-enable no-console */
                         this.msgError = err;
                         this.alertError();
                     });
@@ -81,7 +78,6 @@
                 let id = this.$route.params.id;
                 axios.get(`http://localhost:3000/post/${id}`)
                     .then(response => {
-
                         this.postId = response.data.post._id;
                         this.post = response.data.post;
                         this.comments = response.data.comments;

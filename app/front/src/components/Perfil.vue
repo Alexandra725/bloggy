@@ -107,9 +107,6 @@
                         this.postId = response.data.posts._id
                         this.user = response.data.user;
                         this.posts = response.data.posts;
-                        /* eslint-disable no-console */
-                        console.log('error  ', this.user.role);
-                        /* eslint-enable no-console */
                     }).catch(err => {
                         this.error = err
                     });

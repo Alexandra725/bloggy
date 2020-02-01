@@ -5,7 +5,6 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-
 const routes = [
   {
     path: '/home',
@@ -37,9 +36,10 @@ const routes = [
     name:'onepost',
     component: () => import('../components/OnePost.vue')
   },
-  {path:'/post',
-  name:'perfilposts',
-  component: () => import('../components/PerfilPosts.vue')
+  {
+    path:'/post',
+    name:'perfilposts',
+    component: () => import('../components/PerfilPosts.vue')
   },
   {
     path:'/edit/:id',
@@ -50,7 +50,6 @@ const routes = [
     path:'/badwords',
     name:'badwords',
     component: () => import('../components/BadWords.vue')
-
   }
 ]
 

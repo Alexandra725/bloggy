@@ -1,5 +1,5 @@
 <template>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-midnight">
   <div class="container">
     <a class="navbar-brand">
       <img src="../assets/img/bloggy-logo.svg" class="logo" alt="logo" title="Bloggy">
@@ -55,8 +55,8 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css?family=Homemade+Apple|Mr+Dafoe|Mr+De+Haviland|Raleway&display=swap');
 
-.main-header {
-  background:#343a40;
+.bg-midnight {
+  background-color: #2c3e50;
 }
 
 .main-header .navbar-nav {
@@ -77,6 +77,10 @@ export default {
   color: #fff;
   font-size: 16px;
   margin-left: 10px;
+}
+
+.navbar .btn {
+  font-size: 14px;
 }
 
 .logo {

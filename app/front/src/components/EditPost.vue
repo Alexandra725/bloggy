@@ -49,7 +49,7 @@
                 };
                 const data = {
                     title: this.title,
-                    description: this.title,
+                    description: this.description,
                     text: this.text
                 }
                 axios.put(`http://localhost:3000/post/${id}`, data, config)

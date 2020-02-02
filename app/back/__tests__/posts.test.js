@@ -1,27 +1,17 @@
-const myApp = require('../app.js')
-const supertest = require('supertest')
-
-let request;
-
-beforeAll(async () => {
-    const app = await myApp();
-    request = supertest(myApp());
-
-});
-
+const request = require('supertest')
+const app = require('../app')
 
 describe('Testing API with an ADMIN user', ()=> {
 
-    let token = null
+    let token 
 
     beforeEach((done) => {
-        request
-            .post('/login')
-            .auth('admin@admin.com', '1234')
-            .end(function (err, res) {
-
-                token = res.body.user.token;
-                console.log(res.body)
+    request(app)
+            .post('http://localhost:3000/login')
+            .send({email:'admin@admin.com', pass:'1234'})
+            .end(function (err, response) {
+                console.log(response)
++
                 done();
             });
     });

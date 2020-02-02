@@ -34,4 +34,4 @@ describe('My First Test', () => {
     cy.get('.button').click({ force: true })
   });
 
-})
+});

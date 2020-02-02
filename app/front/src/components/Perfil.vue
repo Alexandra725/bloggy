@@ -24,6 +24,7 @@
                 <b-card class="card posts-list" bg-variant="white" text-variant="dark" v-for="(post) in posts" v-bind:key="post._id">
                     <router-link :to="`/post/${post._id}`" class="router">
                         <h4>{{post.title}}</h4>
+
                     </router-link>
                     <p>{{post.description}}</p>
                     <router-link class="router" :to="`/edit/${post._id}`">

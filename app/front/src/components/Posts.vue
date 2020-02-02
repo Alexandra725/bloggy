@@ -17,17 +17,20 @@
         </div> <!-- end of .post-article -->
       </div> <!-- end of .col-md-12 -->
     </div> <!-- end of .container -->
+  <Footer></Footer>
   </div>
 </template>
 
 <script>
   import axios from 'axios';
   import NavBar from './NavBar';
+  import Footer from './footer'
 
   export default {
     name: 'Posts',
     components: {
-      'NavBar': NavBar
+      'NavBar': NavBar,
+      'Footer': Footer
     },
     data() {
       return {

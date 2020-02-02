@@ -40,17 +40,20 @@
                 </b-col>
             </b-row>
         </b-container>
+        <Footer></Footer>
     </div>
 </template>
 
 <script>
     import NavBar from './NavBar';
+    import Footer from './footer'
     import axios from 'axios';
 
     export default {
         name: 'onePost',
         components: {
-            'NavBar': NavBar
+            'NavBar': NavBar,
+            'Footer': Footer
         },
         data() {
             return {

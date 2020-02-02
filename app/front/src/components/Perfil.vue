@@ -23,6 +23,7 @@
                 <b-card class="card" bg-variant="white" text-variant="dark" v-for="(post) in posts"
                     v-bind:key="post._id">
                     <p>{{post.title}}</p>
+                    <p>{{post.description}}</p>
                     <router-link :to="`/post/${post._id}`">
                         <b-button variant="light">Ver más</b-button>
                     </router-link>

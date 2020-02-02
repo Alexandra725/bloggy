@@ -1,16 +1,17 @@
 <template>
     <div>
         <NavBar></Navbar>
-        <b-container class="bv-example-row">
+        <b-container class="mt-5">
             <b-row>
-                <b-col cols="10">
-                    <a class="title">{{post.title}}</a>
-                    <p>Autor: {{userName}}</p>
-                    <a class="description">{{post.description}}</a>
-
+                <b-col cols="8">
+                    <h3>{{post.title}}</h3>
                     <p class="text" disabled="">{{post.text}}</p>
+                    <div>
+                        <span class="badge">Publicado el {{post.date}}</span>
+                        <div class="pull-right"><p class="text-muted post-author">{{post.name}}</p></div>         
+                    </div>
                 </b-col>
-                <b-col cols="2" class="comment-publi">
+                <b-col cols="4" class="comment-publi">
                     <p> Comentarios</p>
                     <div v-for="comment in comments" v-bind:text="comment" v-bind:key="comment._id">
                         <p class="name">{{comment.userName}}</p>
@@ -99,19 +100,6 @@
 <style scoped>
     @media (min-width: 1200px) {
 
-        .bv-example-row {
-            margin-top: 70px;
-            width: 100%;
-        }
-
-        .text {
-            margin-top: 20px;
-            height: 600px;
-        }
-
-        .col-comment {
-            width: auto;
-        }
 
         .comment {
             width: 200px;
@@ -137,8 +125,8 @@
         }
 
         .title {
-            font-size: 55px;
-            font-family: 'Mr De Haviland', cursive;
+            font-size: 36px;
+            font-family: 'Lato', cursive;
         }
 
         .button {

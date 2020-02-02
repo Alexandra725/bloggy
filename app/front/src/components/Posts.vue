@@ -7,6 +7,7 @@
       <b-card-text id="text">
         {{post.title}}
         <p>{{post.name}}</p>
+        <p>{{post.description}}</p>
       </b-card-text>
       <router-link class="router" :to="`/post/${post._id}`">
         <b-button variant="dark">post</b-button>

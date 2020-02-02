@@ -6,6 +6,8 @@
                 <b-col cols="10">
                     <a class="title">{{post.title}}</a>
                     <p>Autor: {{userName}}</p>
+                    <a class="description">{{post.description}}</a>
+
                     <p class="text" disabled="">{{post.text}}</p>
                 </b-col>
                 <b-col cols="2" class="comment-publi">
@@ -19,7 +21,7 @@
                     <b-form-textarea class="textComment" placeholder="Enter comment" v-model="textComment">
                     </b-form-textarea>
                     <b-alert v-if="error" variant="danger" show dismissible>
-                      {{msgError}}:  Hay palabras que no estan permitidas. Revisa tu comentario
+                        {{msgError}}: Hay palabras que no estan permitidas. Revisa tu comentario
                     </b-alert>
                     <b-button pill variant="outline-secondary" v-on:click="publicComment" class="button">Comentar
                     </b-button>
@@ -45,7 +47,7 @@
                 postId: '',
                 userName: '',
                 textComment: '',
-                msgError:'',
+                msgError: '',
                 error: false
             }
         },
@@ -62,9 +64,9 @@
                     }
                 };
                 const data = {
-                        text: this.textComment
-                    }
-                axios.post(`http://localhost:3000/post/${id}/comments`,data ,config)
+                    text: this.textComment
+                }
+                axios.post(`http://localhost:3000/post/${id}/comments`, data, config)
                     .then(
                         this.getOnePost()
                     )

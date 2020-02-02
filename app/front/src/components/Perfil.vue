@@ -60,17 +60,21 @@
                 </b-col>
             </b-row>
             </div> <!-- end of .container -->
+            <Footer></Footer>
     </div>
 </template>
 
 <script>
-    import axios from 'axios'
-    import NavBar from './NavBar'
+    import axios from 'axios';
+    import NavBar from './NavBar';
+    import Footer from './footer';
+
 
     export default {
         name: 'Perfil',
         components: {
-            'NavBar': NavBar
+            'NavBar': NavBar,
+            'Footer': Footer
         },
 
         data() {

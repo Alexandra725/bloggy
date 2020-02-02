@@ -18,6 +18,7 @@
         </b-col>
       </b-row>
     </b-container>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -25,10 +26,12 @@
 <script>
   import axios from 'axios';
   import NavBar from './NavBar';
+  import Footer from './footer'
 
   export default {
     components: {
-      'NavBar': NavBar
+      'NavBar': NavBar,
+      'Footer': Footer
     },
     data() {
       return {

@@ -8,6 +8,7 @@
             <b-row>
                 <b-col cols="10">
                     <b-input class="title" v-model="title"></b-input>
+                    <b-input class="description" v-model="description"></b-input>
                     <b-form-textarea class="text" v-model="text"></b-form-textarea>
                     <b-button v-on:click="editPost(idPost)">Confirmar</b-button>
                 </b-col>
@@ -28,6 +29,7 @@
         data() {
             return {
                 text: '',
+                description: '',
                 title: '',
                 idPost: '',
                 error: false,
@@ -47,6 +49,7 @@
                 };
                 const data = {
                     title: this.title,
+                    description: this.title,
                     text: this.text
                 }
                 axios.put(`http://localhost:3000/post/${id}`, data, config)
@@ -64,6 +67,7 @@
                 axios.get(`http://localhost:3000/post/${id}`)
                     .then(response => {
                         this.title = response.data.post.title;
+                        this.description = response.data.post.description;
                         this.text = response.data.post.text;
                         this.idPost = response.data.post._id;
                     })

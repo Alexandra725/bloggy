@@ -7,6 +7,7 @@
           <h1>Escribe tu publicación!</h1>
           <form>
             <b-form-input class="title" v-model="title">{{post.title}}</b-form-input>
+            <b-form-input class="description" v-model="description">{{post.description}}</b-form-input>
             <b-form-textarea class="text" v-model="text">{{post.text}}</b-form-textarea>
           </form>
           <b-button class="publish" pill variant="outline-secondary" v-on:click="publicPost">Publicar</b-button>
@@ -29,6 +30,7 @@
       return {
         post: '',
         title: '',
+        description:'',
         text: '',
         error: ''
       }
@@ -43,6 +45,7 @@
         };
         axios.post('http://localhost:3000/post', {
               title: this.title,
+              description: this.description,
               text: this.text
             },
             config)

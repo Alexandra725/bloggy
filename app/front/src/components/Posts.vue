@@ -11,7 +11,7 @@
           <p>{{post.description}}</p>
           <div>
             <span class="badge">Publicado el {{post.date}}</span>
-            <div class="pull-right"><p class="text-muted post-author">{{post.name}}</p></div>         
+            <div class="float-right"><span class="badge">{{post.name}}</span></div>         
           </div>
           <hr>
         </div> <!-- end of .post-article -->
@@ -68,10 +68,6 @@
 </script>
 
 <style>
-  .post-date {
-    font-size: 14px;
-  }
-
   .post-article .router {
     font-weight: bold;
     color: #000;

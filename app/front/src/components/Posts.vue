@@ -2,7 +2,7 @@
   <div>
     <NavBar class="nav"></NavBar>
 
-    <div class="container">
+    <div class="container mt-5">
       <div class="col-md-12">
         <div class="post-article" v-for="post in posts" v-bind:key="post._id">
           <router-link class="router" :to="`/post/${post._id}`">
@@ -70,5 +70,11 @@
 <style>
   .post-date {
     font-size: 14px;
+  }
+
+  .post-article .router {
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
   }
 </style>
